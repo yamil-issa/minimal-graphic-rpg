@@ -1,6 +1,12 @@
 package rpgSwing;
 
-public abstract class Character {
+import javax.swing.JLabel;
+
+public abstract class Character extends JLabel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String name;
 	protected int maxHp, hp, xp;
 	

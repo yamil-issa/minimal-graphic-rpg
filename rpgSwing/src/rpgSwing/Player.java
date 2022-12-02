@@ -2,7 +2,12 @@ package rpgSwing;
 
 import java.util.ArrayList;
 
-public class Player extends Character {
+public class Player extends Character  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int numAttackUpgrades, numDefUpgrades;
 	
 	private int gold, restsLeft, pots;

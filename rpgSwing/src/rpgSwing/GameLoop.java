@@ -8,6 +8,8 @@ import javax.swing.*;
 public class GameLoop {
 	private static JFrame window = new JFrame("Age of Darkness");
 	private static JPanel mainPanel = new JPanel();
+	private static String playerName;
+	private static String playerClass;
 	
 	public static JPanel getPanel() {
 		return GameLoop.mainPanel;
@@ -41,6 +43,10 @@ public class GameLoop {
 		String classValue = cb.getSelectedItem().toString();
 		Player player = new Player(infoPlayerName.getTextFieldInfo(), classValue);
 		
+		GameLoop.playerName = player.getName();
+		GameLoop.playerName = player.getChosenClass();
+
+		
 		playerNameButton.addActionListener(infoPlayerName);
         		
        
@@ -53,6 +59,14 @@ public class GameLoop {
 		window.add(mainPanel);
 		window.validate();
 		window.setVisible(true);
+	}
+	
+	public static String getPlayerNameGlobal() {
+		return GameLoop.playerName;
+	}
+    
+	public static String getPlayerClassGlobal() {
+		return GameLoop.playerClass;
 	}
 
 }

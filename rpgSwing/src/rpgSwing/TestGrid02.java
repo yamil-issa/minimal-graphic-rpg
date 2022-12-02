@@ -134,7 +134,6 @@ public class TestGrid02 {
                             border = new MatteBorder(1, 1, 1, 1, Color.GRAY);
                         }
                     }
-                    
                     cellPane.setBorder(border);
                     add(cellPane, gbc);
                 }
@@ -152,7 +151,7 @@ public class TestGrid02 {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     defaultBackground = getBackground();
-                    
+                    setBackground(Color.RED);
                 }
 
                 @Override
