@@ -3,7 +3,6 @@ package rpgSwing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
@@ -18,17 +17,14 @@ public class Mov {
 	private final MoveModel moveModel;
 	private final Showvisible showvisible;
 	
-	private final MoveModel moveModel2;
-	private final Showvisible showvisible2;
-
-	public Mov() {
+		public Mov() {
 		moveModel = new MoveModel();
 		showvisible = new Showvisible(moveModel);
+		showvisible.getMoveWestButton().addActionListener(e-> movePlayerXNegative(50));
 		showvisible.getMoveEastButton().addActionListener(e-> movePlayerX(50));
+		showvisible.getMoveDownButton().addActionListener(e-> movePlayerYNegative(50));
+		showvisible.getMoveUpButton().addActionListener(e-> movePlayerY(50));
 		
-		moveModel2 = new MoveModel();
-		showvisible2 = new Showvisible(moveModel2);
-		showvisible2.getMoveDownButton().addActionListener(e-> movePlayerY(50));
 		
 	}
 
@@ -39,11 +35,24 @@ public class Mov {
 		showvisible.refresh();
 	}
 	
-	private void movePlayerY(final int distance) {
-		moveModel2.setPlayerY(moveModel2.getPlayerY()+distance);
-		showvisible2.refresh();
+	private void movePlayerXNegative(final int distance) {
+		moveModel.setPlayerX(moveModel.getPlayerX()-distance);
+		showvisible.refresh();
 	}
-
+	
+	private void movePlayerY(final int distance) {
+		moveModel.setPlayerY(moveModel.getPlayerY()-distance);
+		showvisible.refresh();
+	}
+	
+	private void movePlayerYNegative(final int distance) {
+		moveModel.setPlayerY(moveModel.getPlayerY()+distance);
+		showvisible.refresh();
+	}
+	
+  
+	
+	
 	public static void main(final String[] args) {
 		new Mov();
 	}
@@ -66,7 +75,7 @@ class Showvisible {
 
 
 	private void createAndShowGUI() {
-		final JFrame board = new JFrame("Single Player Game");
+		final JFrame board = new JFrame("Age Of Darkness ");
 		board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainPanel = new MainPanel();
 		board.add(mainPanel);
@@ -76,8 +85,8 @@ class Showvisible {
 
 	JButton getMoveEastButton() { return mainPanel.getMoveEastButton(); }
 	JButton getMoveDownButton() { return mainPanel.getMoveDownButton(); }
-	JButton getMoveWestButton() { return mainPanel.getMoveEastButton(); }
-	JButton getMoveUpButton() { return mainPanel.getMoveDownButton(); }
+	JButton getMoveWestButton() { return mainPanel.getMoveWestButton(); }
+	JButton getMoveUpButton() { return mainPanel.getMoveUpButton(); }
 
 	class MainPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
@@ -109,9 +118,7 @@ class Showvisible {
 
 	class BoardPanel extends JPanel {
 
-		/**
-		 * 
-		 */
+		
 		private static final long serialVersionUID = 1L;
 		Player player;
 
@@ -146,7 +153,7 @@ class Showvisible {
 
 		Tile() {
 			setPreferredSize(new Dimension(MoveModel.getSquareSize(), MoveModel.getSquareSize()));
-			setBorder(BorderFactory.createLineBorder(Color.ORANGE, GAP));
+			setBorder(BorderFactory.createLineBorder(Color.GRAY, GAP));
 		}
 	}
 
@@ -178,8 +185,8 @@ class Showvisible {
 		private static final long serialVersionUID = 1L;
 		JButton moveEastButton =new JButton("Droite");
 		JButton moveDownButton =new JButton("Bas");
-		JButton moveWestButton =new JButton("Droite");
-		JButton moveUpButton =new JButton("Bas");
+		JButton moveWestButton =new JButton("Gauche");
+		JButton moveUpButton =new JButton("Haut");
 
 
 		BottomPanel(){
@@ -199,25 +206,3 @@ class Showvisible {
 	}
 }
 
-class MoveModel{
-
-	private final int boardRows = 5, boardCols = 5, squareSize = 50;
-	int playerX = 0;
-	private int playerY = 0;
-	private final int playerSize =25;
-	int getPlayerX() {  return playerX; }
-
-	void setPlayerX(final int playerX) {  this.playerX = playerX; }
-
-	int getPlayerY() {return playerY;   }
-
-	void setPlayerY(final int playerY) {  this.playerY = playerY; }
-
-	int getPlayerSize() {return playerSize; }
-
-	int getBoardRows() {return boardRows; }
-
-	int getBoardCols() {return boardCols; }
-
-	int getSquareSize() {return squareSize; }
-}

@@ -1,6 +1,10 @@
 package rpgSwing;
 
 public class Enemy extends Character {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int playerXp;
 
 	public Enemy(String name, int playerXp) {
