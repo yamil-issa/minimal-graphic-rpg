@@ -27,9 +27,14 @@ public class Mov {
 		
 		
 	}
+    
+	private void battle(Enemy enemy) {
+		
+		
+	}
+	
 
-
-	//Move player in the x direction to the East (positive) or west (negative 
+	 
 	private void movePlayerX(final int distance) {
 		moveModel.setPlayerX(moveModel.getPlayerX()+distance);
 		showvisible.refresh();
@@ -92,6 +97,7 @@ class Showvisible {
 			add(new BoardPanel());
 			bPanel = new BottomPanel();
 			add(bPanel, new BorderLayout());
+			add(new PlayerPanel());
 		}
 
 		JButton getMoveEastButton() { return bPanel.getMoveEastButton(); }
@@ -113,7 +119,7 @@ class Showvisible {
 
 	class BoardPanel extends JPanel {
 
-		
+		private static Player finalPlayer;
 		private static final long serialVersionUID = 1L;
 		Player player;
 
@@ -131,14 +137,22 @@ class Showvisible {
 				}
 			}
 
-			player = new FinalPlayer(GameLoop.getPlayerNameGlobal(), GameLoop.getPlayerClassGlobal());
+			player = new FinalPlayer(ButtonAction.getGlobalPlayerInfo().getCharacterName(), ButtonAction.getGlobalPlayerInfo().getChosenClass());
+			BoardPanel.finalPlayer = player;
 			player.setBounds(new Rectangle(1000,1000, 1000,1000));
+			/*System.out.println(player.getCharacterName());
+			System.out.println(player.getChosenClass());
+			*/
 		}
 
 		@Override
 		protected void paintComponent(final Graphics g) {
 			super.paintComponent(g);
 			player.paint(g);
+		}
+		
+		public static Player getFinalPlayer() {
+			return BoardPanel.finalPlayer;
 		}
 	}
 
@@ -159,9 +173,7 @@ class Showvisible {
 			// TODO Auto-generated constructor stub
 		}
 
-		/**
-		 * 
-		 */
+		
 		private static final long serialVersionUID = 1L;
 
 		@Override
@@ -179,15 +191,15 @@ class Showvisible {
 		 */
 		private static final long serialVersionUID = 1L;
 		JButton moveEastButton =new JButton("Droite");
-		JButton moveDownButton =new JButton("Bas");
 		JButton moveWestButton =new JButton("Gauche");
+		JButton moveDownButton =new JButton("Bas");
 		JButton moveUpButton =new JButton("Haut");
 
 
 		BottomPanel(){
 			add(moveEastButton, BorderLayout.EAST);
-			add(moveDownButton, BorderLayout.SOUTH);
 			add(moveWestButton, BorderLayout.WEST);
+			add(moveDownButton, BorderLayout.SOUTH);
 			add(moveUpButton, BorderLayout.NORTH);
 
 		}
@@ -199,5 +211,27 @@ class Showvisible {
 
 
 	}
+	
+ class PlayerPanel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	
+	JLabel name = new JLabel("nom : " + BoardPanel.getFinalPlayer().getCharacterName() );
+	JLabel playerClass = new JLabel("classe: " + BoardPanel.getFinalPlayer().getChosenClass());
+	JLabel playerHp = new JLabel("HP: " + BoardPanel.getFinalPlayer().getCharacterHp());
+	
+	PlayerPanel(){
+		add(name);
+		add(playerClass);
+	}
+	 
+ }
+ 
+ class BattlePanel extends JPanel{
+
+	private static final long serialVersionUID = 1L;
+	
+	 
+ }
 }
 

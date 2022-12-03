@@ -1,6 +1,8 @@
 package rpgSwing;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -38,16 +40,21 @@ public class GameLoop {
 		ButtonAction infoPlayerName = new ButtonAction(playerName);
 		
 		
-		 JComboBox<String> cb = new JComboBox<String>(Player.getPlayerClassArray());
-		 
-		String classValue = cb.getSelectedItem().toString();
-		Player player = new Player(infoPlayerName.getTextFieldInfo(), classValue);
+		 JComboBox<String> cb = new JComboBox<>(Player.getPlayerClassArray());
+	
 		
-		GameLoop.playerName = player.getName();
-		GameLoop.playerName = player.getChosenClass();
-
-		
+			
 		playerNameButton.addActionListener(infoPlayerName);
+		
+		playerNameButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String classValue = (String) cb.getSelectedItem();
+				GameLoop.playerClass = classValue;
+			}
+			
+		});
         		
        
 		mainPanel.add(mainLablel);

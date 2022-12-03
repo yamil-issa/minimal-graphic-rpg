@@ -48,28 +48,7 @@ public class Player extends Character  {
 		return playerClass;
 	}
 	
-	public int getPlayerXposition() {
-		return this.x;
-		
-	}
 	
-    public int getPlayerYposition() {
-    	return this.y;
-	}
-    
-    public void setPositivePlayerXPosition() {
-    	this.x++;
-    }
-    public void setPositivePlayerYPosition() {
-    	this.y++;
-    }
-    public void setNegativePlayerXPosition() {
-    	this.x--;
-    }
-    public void setNegativePlayerYPosition() {
-    	this.y--;
-    }
-    
 
 	@Override
 	public int attack() {

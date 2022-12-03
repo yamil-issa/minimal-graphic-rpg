@@ -7,8 +7,9 @@ import javax.swing.*;
 
 public class ButtonAction implements ActionListener {
 	private JTextField textField;
-	private String textFieldName;
-	
+	private static String textFieldName;
+	private static Player globalPlayer;
+		
 	public ButtonAction(JTextField  field) {
 		this.textField = field;
 
@@ -17,8 +18,8 @@ public class ButtonAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if(actionEvent.getSource().getClass() == JButton.class) {
-			this.textFieldName = this.textField.getText();
-			getTextFieldInfo();
+			ButtonAction.textFieldName = this.textField.getText();
+			
 			JFrame secondFrame = new JFrame();
 			secondFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			secondFrame.setSize(1000, 1000);
@@ -27,21 +28,32 @@ public class ButtonAction implements ActionListener {
 			
 			GoButton renderMap = new GoButton();
 			
+			Player player = new Player(getTextFieldInfo(), GameLoop.getPlayerClassGlobal());
+			globalPlayer = player;
+			/*System.out.println(player.getCharacterName());
+			System.out.println(player.getChosenClass());
+            */
+			
 			goButton.addActionListener(renderMap);
 			secondPanel.add(Story.printIntro());
 			secondPanel.add(goButton);
 			goButton.addActionListener(null);
 			
 			secondFrame.add(secondPanel);
-			//secondFrame.add(GameControler.createMainPanel());
 			secondFrame.validate();
 			secondFrame.setVisible(true);
 
 		}
 		
 	}
-	public String getTextFieldInfo() {
-		return this.textFieldName;
+	public static String getTextFieldInfo() {
+		return ButtonAction.textFieldName;
 	}
+	
+	public static Player getGlobalPlayerInfo() {
+		return globalPlayer;
+	}
+	
+	
 
 }
