@@ -24,6 +24,10 @@ public class ButtonAction implements ActionListener {
 			secondFrame.setSize(1000, 1000);
 			JPanel secondPanel = new JPanel();
 			JButton goButton = new JButton("go");
+			
+			GoButton renderMap = new GoButton();
+			
+			goButton.addActionListener(renderMap);
 			secondPanel.add(Story.printIntro());
 			secondPanel.add(goButton);
 			goButton.addActionListener(null);

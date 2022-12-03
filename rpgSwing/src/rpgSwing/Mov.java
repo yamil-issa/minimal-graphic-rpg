@@ -50,12 +50,7 @@ public class Mov {
 		showvisible.refresh();
 	}
 	
-  
-	
-	
-	public static void main(final String[] args) {
-		new Mov();
-	}
+ 
 }
 
 class Showvisible {

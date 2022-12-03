@@ -11,7 +11,7 @@ public class GoButton implements ActionListener {
 	public void actionPerformed(ActionEvent actionEvent) {
 		if(actionEvent.getSource().getClass() == JButton.class) {
 			
-			
+			new Mov();
 		}
 		
 	}
