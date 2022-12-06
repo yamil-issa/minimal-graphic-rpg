@@ -22,9 +22,6 @@ public class Player extends Character  {
 	
 	static String[] playerClass = {"sorcier", "chevalier", "mendiant"};
 	
-	private int x = 0;
-	private int y = 4;
-	
     
 	//player constructor
 	public Player(String name, String pClass) {
@@ -109,20 +106,7 @@ public class Player extends Character  {
 	public Weapon getWeapon(int numWeapon) {
 		return this.playerWeapons[numWeapon];
 	}
-	/*public void renderWeaponBought() {
-		for(Weapon elem: this.playerWeaponsBought)
-	       {
-	       	 System.out.println (elem.getWeaponName());
-	       	 
-	       }
-		
-	}
-	*/
 	
-	/*public void chooseClass() {
-		
-	}
-	*/
 	
 	public String getChosenClass(){
 		return this.chosenClass;

@@ -12,21 +12,6 @@ public class Story {
 		
     	}
 	
-	public static void printFirstActIntro() {
-		
-		JLabel firstActLine = new JLabel("Votre quête de vengeance debute, vous traversez la foret afin de sortir du village ");
-		}
-	public static void printFirstActOutro() {
-		JLabel firstActOutroLine = new JLabel("Vous sortez du village, vous vous dirigez à present vers le chateau du namless King ");
-		}
-	public static void printSecondActIntro() {
-		JLabel secondActIntroLine = new JLabel("vous arrivez à l'acdemie d'Aria lucaria ");
-	
-	}
-	public static void printSecondActOutro() {
-		JLabel secondAcOutrotLine = new JLabel("Vous êtes arrivé devant le chateau du nameless King");
-		
-	}
 	
 	/*public static void printEnd(Player player) {
 		if(player.getCharacterHp() <= 0) {
@@ -43,5 +28,13 @@ public class Story {
 		
 	}
   */
+
+public static String printOutro() {
+	
+	String outro = "<html>Vous avez reussi à vaincre le nameless King,</br>"
+			+ " le mal ne rongera plus le royaume, vous pouvez desormais reposer en paix</html>";
+	return outro;
+	
+	}
 
 }

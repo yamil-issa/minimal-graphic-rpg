@@ -26,33 +26,98 @@ public class Mov {
 		showvisible.getMoveUpButton().addActionListener(e-> movePlayerY(50));
 		
 		
+		
 	}
     
-	private void battle(Enemy enemy) {
-		
-		
-	}
-	
 
-	 
 	private void movePlayerX(final int distance) {
 		moveModel.setPlayerX(moveModel.getPlayerX()+distance);
 		showvisible.refresh();
+		
+		if(moveModel.getPlayerX() == 200 && moveModel.getPlayerY() == 0) {
+			JFrame finalFrame = new JFrame();
+			finalFrame.setSize(1000, 1000);
+			finalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			JPanel finalPanel = new JPanel();
+			JLabel finalText = new 	JLabel(Story.printOutro());
+			
+			finalPanel.add(finalText);
+			finalFrame.add(finalPanel);
+			finalFrame.validate();
+			finalFrame.setVisible(true);
+			
+			
+
+			
+			
+		}
+		
+		
 	}
 	
 	private void movePlayerXNegative(final int distance) {
 		moveModel.setPlayerX(moveModel.getPlayerX()-distance);
 		showvisible.refresh();
+		
+		if(moveModel.getPlayerX() == 200 && moveModel.getPlayerY() == 0) {
+			JFrame finalFrame = new JFrame();
+			finalFrame.setSize(1000, 1000);
+			finalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			JPanel finalPanel = new JPanel();
+			JLabel finalText = new 	JLabel(Story.printOutro());
+			
+			finalPanel.add(finalText);
+			finalFrame.add(finalPanel);
+			finalFrame.validate();
+			finalFrame.setVisible(true);
+			
+			
+		}
 	}
 	
 	private void movePlayerY(final int distance) {
 		moveModel.setPlayerY(moveModel.getPlayerY()-distance);
 		showvisible.refresh();
+		
+		if(moveModel.getPlayerX() == 200 && moveModel.getPlayerY() == 0) {
+			JFrame finalFrame = new JFrame();
+			finalFrame.setSize(1000, 1000);
+			finalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			JPanel finalPanel = new JPanel();
+			JLabel finalText = new 	JLabel(Story.printOutro());
+			
+			finalPanel.add(finalText);
+			finalFrame.add(finalPanel);
+			finalFrame.validate();
+			finalFrame.setVisible(true);
+		
+			
+
+			
+			
+		}
 	}
 	
 	private void movePlayerYNegative(final int distance) {
 		moveModel.setPlayerY(moveModel.getPlayerY()+distance);
 		showvisible.refresh();
+		
+		if(moveModel.getPlayerX() == 200 && moveModel.getPlayerY() == 0) {
+			JFrame finalFrame = new JFrame();
+			finalFrame.setSize(1000, 1000);
+			finalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			JPanel finalPanel = new JPanel();
+			JLabel finalText = new 	JLabel(Story.printOutro());
+			
+			finalPanel.add(finalText);
+			finalFrame.add(finalPanel);
+			finalFrame.validate();
+			finalFrame.setVisible(true);
+			
+
+			
+			
+		}
 	}
 	
  
@@ -104,7 +169,7 @@ class Showvisible {
 		JButton getMoveDownButton() { return bPanel.getMoveDownButton(); }
 		JButton getMoveWestButton() { return bPanel.getMoveWestButton(); }
 		JButton getMoveUpButton() { return bPanel.getMoveUpButton(); }
-
+       
 
 	}
 
@@ -217,12 +282,14 @@ class Showvisible {
 	private static final long serialVersionUID = 1L;
 	
 	JLabel name = new JLabel("nom : " + BoardPanel.getFinalPlayer().getCharacterName() );
-	JLabel playerClass = new JLabel("classe: " + BoardPanel.getFinalPlayer().getChosenClass());
+	JLabel playerClass = new JLabel("classe: " 	+ " " + BoardPanel.getFinalPlayer().getChosenClass());
 	JLabel playerHp = new JLabel("HP: " + BoardPanel.getFinalPlayer().getCharacterHp());
+	
 	
 	PlayerPanel(){
 		add(name);
 		add(playerClass);
+		add(playerHp);
 	}
 	 
  }
@@ -230,8 +297,36 @@ class Showvisible {
  class BattlePanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	 //JLabel enemyInfo = new JLabel(enemy.getCharacterName() + "\nHP: " + enemy.getCharacterHp() + "/" + enemy.getCharacterMaxHp());
+	 JLabel playerInfo = new JLabel(BoardPanel.getFinalPlayer().getCharacterName() + "\nHP: " + BoardPanel.getFinalPlayer().getCharacterHp() + "/" + BoardPanel.getFinalPlayer().getCharacterMaxHp());
+     JLabel actionsLabel = new JLabel("choisissez une action: ");
+     JButton battleAction = new JButton("Combattre");
+     JButton runAwayAction = new JButton("Fuir");
+		BattlePanel(Enemy enemy){
+			 
+		     
+		     //add(enemyInfo);
+		     add(playerInfo);
+		     add(actionsLabel);
+		     add(battleAction);
+		     add(runAwayAction);
+			
+		}
+		    
+}
+ 
+ class FinalPanel extends JFrame{
+
+	private static final long serialVersionUID = 1L;
 	
+	/*private JLabel finalText = new 	JLabel(Story.printOutro());
+	
+	FinalPanel(){
+		add(finalText);
+	}
+	*/
 	 
  }
+ 
 }
 

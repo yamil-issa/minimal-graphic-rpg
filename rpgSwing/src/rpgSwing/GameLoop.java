@@ -31,6 +31,7 @@ public class GameLoop {
 		JLabel mainLablel = new JLabel("Age of Darkness");
 		JLabel secondLabel = new JLabel("A game made by Issa Yamil");
 		JLabel thirdLabel = new JLabel("Choisissez une classe");
+		JLabel fourthLabel = new JLabel("Choisissez une arme");
 		
 		JTextField playerName = new JTextField(20);
 
