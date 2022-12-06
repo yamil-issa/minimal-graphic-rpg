@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 public class Mov {
 
 	private final MoveModel moveModel;
@@ -27,6 +28,11 @@ public class Mov {
 		
 		
 		
+	}
+		
+	public void battle(Enemy enemy) {
+		
+	
 	}
     
 
@@ -45,10 +51,7 @@ public class Mov {
 			finalFrame.add(finalPanel);
 			finalFrame.validate();
 			finalFrame.setVisible(true);
-			
-			
-
-			
+				
 			
 		}
 		
@@ -156,13 +159,15 @@ class Showvisible {
 	class MainPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 		private final BottomPanel bPanel;
+		private final PlayerPanel pPanel;
 
 		MainPanel() {
 			
 			add(new BoardPanel());
 			bPanel = new BottomPanel();
-			add(bPanel, new BorderLayout());
-			add(new PlayerPanel());
+			add(bPanel);
+			pPanel = new PlayerPanel();
+			add(pPanel);
 		}
 
 		JButton getMoveEastButton() { return bPanel.getMoveEastButton(); }
@@ -186,7 +191,7 @@ class Showvisible {
 
 		private static Player finalPlayer;
 		private static final long serialVersionUID = 1L;
-		Player player;
+		private Player player;
 
 		BoardPanel()   {
 
@@ -202,12 +207,20 @@ class Showvisible {
 				}
 			}
 
-			player = new FinalPlayer(ButtonAction.getGlobalPlayerInfo().getCharacterName(), ButtonAction.getGlobalPlayerInfo().getChosenClass());
+			this.player = new FinalPlayer(ButtonAction.getGlobalPlayerInfo().getCharacterName(), ButtonAction.getGlobalPlayerInfo().getChosenClass());
 			BoardPanel.finalPlayer = player;
-			player.setBounds(new Rectangle(1000,1000, 1000,1000));
-			/*System.out.println(player.getCharacterName());
-			System.out.println(player.getChosenClass());
-			*/
+			
+			if(this.player.getChosenClass() == "sorcier") {
+				this.player.setCharacterHp(100);
+				
+			}else if(this.player.getChosenClass() == "chevalier") {
+				this.player.setCharacterHp(150);
+			}else if(this.player.getChosenClass() == "mendiant") {
+				this.player.setCharacterHp(200);
+			}
+			this.player.setBounds(new Rectangle(1000,1000, 1000,1000));
+			
+			
 		}
 
 		@Override
@@ -294,39 +307,8 @@ class Showvisible {
 	 
  }
  
- class BattlePanel extends JPanel{
-
-	private static final long serialVersionUID = 1L;
-	 //JLabel enemyInfo = new JLabel(enemy.getCharacterName() + "\nHP: " + enemy.getCharacterHp() + "/" + enemy.getCharacterMaxHp());
-	 JLabel playerInfo = new JLabel(BoardPanel.getFinalPlayer().getCharacterName() + "\nHP: " + BoardPanel.getFinalPlayer().getCharacterHp() + "/" + BoardPanel.getFinalPlayer().getCharacterMaxHp());
-     JLabel actionsLabel = new JLabel("choisissez une action: ");
-     JButton battleAction = new JButton("Combattre");
-     JButton runAwayAction = new JButton("Fuir");
-		BattlePanel(Enemy enemy){
-			 
-		     
-		     //add(enemyInfo);
-		     add(playerInfo);
-		     add(actionsLabel);
-		     add(battleAction);
-		     add(runAwayAction);
-			
-		}
-		    
-}
  
- class FinalPanel extends JFrame{
-
-	private static final long serialVersionUID = 1L;
-	
-	/*private JLabel finalText = new 	JLabel(Story.printOutro());
-	
-	FinalPanel(){
-		add(finalText);
-	}
-	*/
-	 
- }
+ 
  
 }
 

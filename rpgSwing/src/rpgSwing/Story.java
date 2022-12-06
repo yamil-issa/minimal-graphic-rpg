@@ -31,8 +31,8 @@ public class Story {
 
 public static String printOutro() {
 	
-	String outro = "<html>Vous avez reussi à vaincre le nameless King,</br>"
-			+ " le mal ne rongera plus le royaume, vous pouvez desormais reposer en paix</html>";
+	String outro = "Vous avez reussi à vaincre le nameless King"
+			+ " le mal ne rongera plus le royaume, vous pouvez desormais reposer en paix";
 	return outro;
 	
 	}

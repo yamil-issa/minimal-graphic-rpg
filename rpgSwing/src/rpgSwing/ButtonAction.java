@@ -30,9 +30,7 @@ public class ButtonAction implements ActionListener {
 			
 			Player player = new Player(getTextFieldInfo(), GameLoop.getPlayerClassGlobal());
 			globalPlayer = player;
-			/*System.out.println(player.getCharacterName());
-			System.out.println(player.getChosenClass());
-            */
+			
 			
 			goButton.addActionListener(renderMap);
 			secondPanel.add(Story.printIntro());
